@@ -1,0 +1,95 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fafafa;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+body .row {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+
+    border: 2px solid #22577a;
+
+    padding: .5rem 1rem;
+    overflow: hidden;
+
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #22577a;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: #22577a;
+    z-index: -1;
+    transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button.anim-left::after {
+    left: -2px;
+    transform: translateX(-100%);
+}
+
+button.anim-right::after {
+    right: -2px;
+    transform: translateX(100%);
+}
+
+button.anim-top::after {
+    left: -2px;
+    transform: translateY(-100%);
+}
+
+button.anim-bottom::after {
+    left: -2px;
+    transform: translateY(100%);
+}
+
+button:hover {
+    cursor: pointer;
+    color: #fff;
+    animation-name: tada;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+    animation-delay: .15s;
+}
+
+button:hover::after {
+    transform: translateX(0);
+    left: 0;
+}
+
+@keyframes tada {
+    0%, 20%, 50%, 80%, 100% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.1);
+    }
+    60% {
+        transform: scale(1.05);
+    }
+}
